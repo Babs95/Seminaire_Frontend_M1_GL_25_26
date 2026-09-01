@@ -1,0 +1,15 @@
+<h1>Projects ({{ projects().length }})</h1>
+
+@if (projects().length === 0){
+  <p class="empty-state">Aucun projet pour l'instant</p>
+} @else {
+  <div class="project-grid">
+    @for (project of projects(); track project.id){
+      <div class="project-card">
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.name }}</p>
+        <span class="status">{{ project.status }}</span>
+      </div>
+    }
+  </div>
+}

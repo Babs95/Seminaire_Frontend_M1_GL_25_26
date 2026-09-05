@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Project } from '../../shared/models/project.models';
+import { Project } from '../../models/project.models';
 
 @Component({
   imports: [],

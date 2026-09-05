@@ -1,5 +1,6 @@
 <h1>Projects ({{ projects().length }})</h1>
 <p>{{ activeProjectsCount() }} projet(s) actif(s)</p>
+<p class="config-debug">Config locale à cette page - taille de page: {{ pageSize }}</p>
 
 @if (projects().length === 0){
   <p class="empty-state">Aucun projet pour l'instant</p>

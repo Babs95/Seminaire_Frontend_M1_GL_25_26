@@ -1,20 +1,28 @@
 import { Component, inject, signal } from '@angular/core';
-import { Project } from '../../shared/models/project.models';
-import { Panel } from '../../components/panel/panel';
 import { ProjectCard } from '../../components/project-card/project-card';
 import { RouterLink } from "@angular/router";
-import { ProjetsService } from '../../shared/services/projets';
+import { Project } from '../../models/project.models';
+import { ProjetsService } from '../../services/projets';
+import { APP_CONFIG, defaultAppConfig } from '../../../../core/config/app-config.token';
 
 @Component({
   imports: [ProjectCard, RouterLink],
   selector: 'app-project-list',
   styleUrl: './project-list.scss',
   templateUrl: './project-list.html',
+  // Scoping : Cette page recoit sa PROPRE instance de APP_CONFIG,
+  // avec une pagination plus large que la config globale sans toucher
+  // à ce que voient les autres composants (ex: Header)
+  providers: [
+    { provide: APP_CONFIG, useValue: { ...defaultAppConfig, defaultPageSize: 25} }
+  ]
 })
 export class ProjectList {
   private projectService = inject(ProjetsService);
+  private config = inject(APP_CONFIG);
   protected readonly projects = this.projectService.projects;
   protected readonly activeProjectsCount = this.projectService.activeProjectsCount;
+  protected readonly pageSize = this.config.defaultPageSize;
 
   /**
    * Methode pour récuper l'evenement exposer par le dumb component enfant ProjectCard

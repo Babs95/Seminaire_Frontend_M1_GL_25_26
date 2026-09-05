@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Project } from '../../shared/models/project.models';
-import { ProjetsService } from '../../shared/services/projets';
+import { Project } from '../../models/project.models';
+import { ProjetsService } from '../../services/projets';
 
 @Component({
   imports: [],

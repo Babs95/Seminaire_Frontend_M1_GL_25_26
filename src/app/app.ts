@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './components/header/header';
+import { Header } from './core/layout/header/header';
+import { ProjetsService } from './features/projects/services/projets';
 
 @Component({
   imports: [RouterOutlet, Header],
@@ -9,5 +10,6 @@ import { Header } from './components/header/header';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('taskflow'); // .set() .update()
+  private projectService = inject(ProjetsService);
+  protected readonly totalTasksCount = this.projectService.totalTasksCount;
 }

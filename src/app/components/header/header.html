@@ -1,7 +1,8 @@
-<header>
+<header class="header">
   <span class="logo">TaskFlow</span>
   <nav>
-    <a routerLink="/">Accueil</a>
-    <a routerLink="/projects">Projets</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Accueil</a>
+    <a routerLink="/projects" routerLinkActive="active">Projects</a>
   </nav>
+  <span class="total-tasks">{{ totalTasksCount() }} tâche(s) au total</span>
 </header>

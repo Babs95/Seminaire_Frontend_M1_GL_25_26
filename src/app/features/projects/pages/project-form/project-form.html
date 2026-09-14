@@ -1,0 +1,32 @@
+<div class="form-layout">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>Nouveau projet</h1>
+
+    <mat-form-field>
+      <mat-label>Nom du projet</mat-label>
+      <input matInput formControlName="name"/>
+      @if(form.controls.name.hasError('required') && form.controls.name.touched){
+        <mat-hint>Le nom est obligatoire</mat-hint>
+      }
+      @if(form.controls.name.hasError('minlength') && form.controls.name.touched){
+        <mat-hint>3 caractères minimum</mat-hint>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Textarea</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit">
+      Créer le projet
+    </button>
+  </form>
+</div>

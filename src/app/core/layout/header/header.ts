@@ -1,9 +1,10 @@
 import { Component, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { APP_CONFIG } from '../../config/app-config.token';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 @Component({
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, MatSlideToggle],
   selector: 'app-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',

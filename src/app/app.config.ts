@@ -6,7 +6,6 @@ import { APP_CONFIG, defaultAppConfig } from './core/config/app-config.token';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    //provideZoneChangeDetection(),
     provideRouter(routes),
     { provide: APP_CONFIG, useValue: defaultAppConfig }
   ]

@@ -4,9 +4,10 @@ import { RouterLink } from "@angular/router";
 import { Project } from '../../models/project.models';
 import { ProjetsService } from '../../services/projets';
 import { APP_CONFIG, defaultAppConfig } from '../../../../core/config/app-config.token';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  imports: [ProjectCard, RouterLink],
+  imports: [ProjectCard, RouterLink, MatButtonModule],
   selector: 'app-project-list',
   styleUrl: './project-list.scss',
   templateUrl: './project-list.html',

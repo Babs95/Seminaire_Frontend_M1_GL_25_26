@@ -25,4 +25,14 @@ export class ProjetsService {
   getById(id: number): Project | undefined {
     return this._projects().find(p => p.id === id);
   }
+
+  addProject(input: Omit<Project, 'id' | 'tasksCount'>) : Project{
+    const project: Project = {
+      ...input,
+      id: Math.max(0, ...this._projects().map(p => p.id)) + 1,
+      tasksCount: 0
+    }
+    this._projects.update(projects => [...projects, project]);
+    return project;
+  }
 }

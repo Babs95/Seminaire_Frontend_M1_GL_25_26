@@ -1,6 +1,6 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from "@angular/forms";
 import { ProjetsService } from "../services/projets";
-import { delay, map, Observable, of } from "rxjs";
+import { catchError, delay, map, Observable, of } from "rxjs";
 
 export function uniqueProjectNameValidator(projectService: ProjetsService): AsyncValidatorFn {
   return (control: AbstractControl): Observable<ValidationErrors | null> => {
@@ -8,12 +8,12 @@ export function uniqueProjectNameValidator(projectService: ProjetsService): Asyn
 
     if(!name) return of(null);
 
-    return of(name).pipe(
-      delay(4000),
-      map(value => {
-        const exists = projectService.projects().some(p => p.name.trim().toLowerCase() === value);
+    return projectService.searchByName(name).pipe(
+      map(matches => {
+        const exists = matches.some(p => p.name.trim().toLowerCase() === name.toLowerCase());
         return exists ? { nameTaken: true} : null;
-      })
+      }),
+      catchError(() =>of(null))
     );
   };
 

@@ -3,7 +3,9 @@
 <p>{{ activeProjectsCount() }} projet(s) actif(s)</p>
 <p class="config-debug">Config locale à cette page - taille de page: {{ pageSize }}</p>
 
-@if (projects().length === 0){
+@if (loading()){
+  <p class="empty-state">Chargement des projets .....</p>
+} @else if (projects().length === 0){
   <p class="empty-state">Aucun projet pour l'instant</p>
 } @else {
   <div class="project-grid">

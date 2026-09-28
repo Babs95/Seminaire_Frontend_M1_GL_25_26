@@ -22,6 +22,7 @@ export class ProjectList {
   private projectService = inject(ProjetsService);
   private config = inject(APP_CONFIG);
   protected readonly projects = this.projectService.projects;
+  protected readonly loading = this.projectService.loading;
   protected readonly activeProjectsCount = this.projectService.activeProjectsCount;
   protected readonly pageSize = this.config.defaultPageSize;
 

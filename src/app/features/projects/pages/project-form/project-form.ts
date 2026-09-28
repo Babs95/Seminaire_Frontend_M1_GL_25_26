@@ -60,7 +60,10 @@ export class ProjectForm {
     }
 
     const {name, description , status } = this.form.getRawValue();
-    this.projetsService.addProject({name, description , status });
-    this.router.navigate(['/projects']);
+    this.projetsService.addProject({name, description , status }).subscribe(() =>{
+      this.router.navigate(['/projects']);
+    }
+    );
+
   }
 }

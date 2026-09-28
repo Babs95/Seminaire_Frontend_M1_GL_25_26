@@ -13,15 +13,20 @@ export class ProjectDetail implements OnInit {
   private projectService = inject(ProjetsService);
   private route = inject(ActivatedRoute);
   protected readonly project = signal<Project | null>(null);
+  protected readonly loading = signal(true);
   protected readonly notFound = signal(false);
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const found = this.projectService.getById(id);
-    if(found){
-      this.project.set(found);
-    }else{
-      this.notFound.set(true);
-    }
+    this.projectService.getById(id).subscribe({
+      next: project => {
+        this.project.set(project);
+        this.loading.set(false);
+      },
+      error: () =>{
+        this.notFound.set(true);
+        this.loading.set(false);
+      }
+    });
   }
 }

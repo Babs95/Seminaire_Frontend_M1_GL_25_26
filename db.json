@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Refonte Facturation",
+      "description": "Migration vers la nouvelle API de paiement",
+      "status": "actif",
+      "tasksCount": 13
+    },
+    {
+      "id": 2,
+      "name": "App Mobile RH",
+      "description": "Application de gestion des congés",
+      "status": "en_pause",
+      "tasksCount": 5
+    },
+    {
+      "id": 3,
+      "name": "Portail Client",
+      "description": "Espace self-service pour les clients",
+      "status": "termine",
+      "tasksCount": 20
+    },
+    {
+      "name": "Test",
+      "description": "Test",
+      "status": "en_pause",
+      "tasksCount": 0,
+      "id": 4
+    }
+  ]
+}

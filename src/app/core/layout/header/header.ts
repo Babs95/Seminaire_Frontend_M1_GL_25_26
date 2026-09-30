@@ -1,7 +1,8 @@
 import { Component, inject, input } from '@angular/core';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { APP_CONFIG } from '../../config/app-config.token';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { AuthService } from '../../auth/auth';
 
 @Component({
   imports: [RouterLink, RouterLinkActive, MatSlideToggle],
@@ -11,7 +12,13 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
 })
 export class Header {
   private config = inject(APP_CONFIG);
+  protected readonly authService = inject(AuthService);
+  private router = inject(Router);
   protected readonly appName = this.config.appName;
-  protected readonly pageSize = this.config.defaultPageSize;
   totalTasksCount = input(0);
+
+  protected onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

@@ -55,13 +55,14 @@ export class ProjectForm {
   onSubmit() {
     console.log("form:", this.form);
     if(this.form.invalid || this.form.pending){
-      this.form.markAllAsTouched;
+      this.form.markAllAsTouched();
       return;
     }
 
     const {name, description , status } = this.form.getRawValue();
-    this.projetsService.addProject({name, description , status }).subscribe(() =>{
-      this.router.navigate(['/projects']);
+    this.projetsService.addProject({name, description , status }).subscribe({
+      next: () => this.router.navigate(['/projects']),
+      error:() => {}
     }
     );
 

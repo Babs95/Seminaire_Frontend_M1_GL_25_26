@@ -1,0 +1,18 @@
+<h1>Projects ({{ projects().length }})</h1>
+<a mat-flat-button color="primary" routerLink="/projects/new">Nouveau projet</a>
+<p>{{ activeProjectsCount() }} projet(s) actif(s)</p>
+<p class="config-debug">Config locale à cette page - taille de page: {{ pageSize }}</p>
+
+@if (loading()){
+  <p class="empty-state">Chargement des projets .....</p>
+} @else if (projects().length === 0){
+  <p class="empty-state">Aucun projet pour l'instant</p>
+} @else {
+  <div class="project-grid">
+    @for (project of projects(); track project.id){
+      <a [routerLink]="['/projects', project.id]">
+        <app-project-card [project]="project" (selected)="onProjectSelected($event)"/>
+      </a>
+    }
+  </div>
+}

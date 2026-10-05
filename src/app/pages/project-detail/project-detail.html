@@ -1,8 +1,0 @@
-@if (notFound()){
-  <p class="empty-state">Ce projet n'existe pas</p>
-}@else if (project(); as p){
-  <h1>{{ p.name}}</h1>
-  <p>{{ p.description}}</p>
-  <span [class]="'status status--' + p.status">{{ p.status.replace('_', ' ') }}</span>
-  <p>{{ p.tasksCount}}</p>
-}

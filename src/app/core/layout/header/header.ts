@@ -5,7 +5,7 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { AuthService } from '../../auth/auth';
 
 @Component({
-  imports: [RouterLink, RouterLinkActive, MatSlideToggle],
+  imports: [RouterLink, RouterLinkActive],
   selector: 'app-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',
